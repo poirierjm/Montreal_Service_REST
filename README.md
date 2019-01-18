@@ -24,7 +24,7 @@ Pour partir le projet, lancer la commande: ``` npm start ```
 
 Contenu du projet
 ---------
-L'énoncé du projet se trouve [ici](Enonce_Projet.pdf)
+L'énoncé du projet se trouve [ici](Enonce_Projet.pdf)  
 Les fonctionnalités implémenté se trouve dans le fichier [correction.md](correction.md)
 
 
