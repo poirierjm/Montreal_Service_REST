@@ -1,0 +1,85 @@
+extends layout
+
+block content
+  h1 Modifier: #{patinoire[0].nom}  
+  hr.divider
+
+  .row
+    .col-xs-12.col-md-12
+
+      #erreur-nom.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs nom de doit pas être vide
+
+      #erreur-arr.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs arrondissement de doit pas être vide
+
+      #erreur-cle.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs clé de doit pas être vide
+
+      #erreur-date.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span La date à un mauvais format
+
+      #erreur-ouvert.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs ouvert doit être un chiffre ou la valeur null
+
+      #erreur-deblaye.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs deblaye doit être un chiffre ou la valeur null
+
+      #erreur-arrose.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs arrose doit être un chiffre ou la valeur null
+
+      #erreur-resurface.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs resurface doit être un chiffre ou la valeur null
+
+      #erreur-condition.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs condition de doit pas être vide
+
+      #succes.alert.alert-success.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span L'installation à été modifier avec succes
+    
+      form(id=patinoire[0]._id)
+        .form-group
+          label(for='nom') Nom:
+          input#nom.form-control(name='nom', type='text', value=patinoire[0].nom)
+        .form-group
+          label(for='nom_arr') Arrondissement:
+          input#nom_arr.form-control(name='nom_arr', type='text', value=patinoire[0].arrondissement.nom_arr)
+        .form-group
+          label(for='cle') Clé:
+          input#cle.form-control(name='cle', type='text', value=patinoire[0].arrondissement.cle)
+        .form-group
+          label(for='date_maj') Derniere mise à jour:
+          input#date_maj.form-control(name='date_maj', type='text', value=patinoire[0].arrondissement.date_maj)
+        .form-group
+          label(for='ouvert') Ouvert:
+          input#ouvert.form-control(name='ouvert', type='text', value=patinoire[0].ouvert)
+        .form-group
+          label(for='deblaye') Deblaye:
+          input#deblaye.form-control(name='deblaye', type='text', value=patinoire[0].deblaye)
+        .form-group
+          label(for='arrose') Arrose:
+          input#arrose.form-control(name='arrose', type='text', value=patinoire[0].arrose)
+        .form-group
+          label(for='resurface') Resurface:
+          input#resurface.form-control(name='resurface', type='text', value=patinoire[0].resurface)
+        .form-group
+          label(for='condition') Condition:
+          input#condition.form-control(name='condition', type='text', value=patinoire[0].condition)
+        .form-group.text-right.row(style='margin-right: 5px;')
+          button.btn.btn-primary.btn-lg(type='button', onclick="modifierPatinoire('" + patinoire[0]._id + "');") Modifier
+
+block menuactive 
+  - var menu = 0
+
+block titre 
+  title #{patinoire[0].nom}

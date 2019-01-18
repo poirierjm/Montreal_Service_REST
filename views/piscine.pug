@@ -1,0 +1,86 @@
+extends layout
+
+block content
+  h1 Modifier: #{piscine[0].nom}  
+  hr.divider
+
+  .row
+    .col-xs-12.col-md-12
+
+      #erreur-iduev.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs ID UEV doit être un nombre et ne doit pas être vide
+
+      #erreur-type.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs type ne doit pas être vide
+
+      #erreur-nom.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs nom de doit pas être vide
+
+      #erreur-arrondissement.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs arrondissement de doit pas être vide
+
+      #erreur-adresse.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs adresse de doit pas être vide
+
+      #erreur-long.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs longitude doit être un nombre
+
+      #erreur-lat.alert.alert-danger.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span Le champs latitude doit être un nombre
+
+      #succes.alert.alert-success.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span L'installation à été modifier avec succes
+
+      form(id=piscine[0]._id)
+        .form-group
+          label(for='idUev') ID UEV:
+          input#idUev.form-control(name='idUev', type='text', value=piscine[0].idUev)
+        .form-group
+          label(for='type') Type:
+          input#type.form-control(name='type', type='text', value=piscine[0].type)
+        .form-group
+          label(for='nom') Nom:
+          input#nom.form-control(name='nom', type='text', value=piscine[0].nom)
+        .form-group
+          label(for='arrondissement') Arrondissement:
+          input#arrondissement.form-control(name='arrondissement', type='text', value=piscine[0].arrondissement)
+        .form-group
+          label(for='adresse') Adresse:
+          input#adresse.form-control(name='adresse', type='text', value=piscine[0].adresse)
+        .form-group
+          label(for='prioriete') Prioriété:
+          input#prioriete.form-control(name='prioriete', type='text', value=piscine[0].prioriete)
+        .form-group
+          label(for='gestion') Gestion:
+          input#gestion.form-control(name='gestion', type='text', value=piscine[0].gestion)
+        .form-group
+          label(for='pointX') Point X:
+          input#pointX.form-control(name='pointX', type='text', value=piscine[0].pointX)
+        .form-group
+          label(for='pointY') Point Y:
+          input#pointY.form-control(name='pointY', type='text', value=piscine[0].pointY)
+        .form-group
+          label(for='equipement') Équipement:
+          input#equipement.form-control(name='equipement', type='text', value=piscine[0].equipement)
+        .form-group
+          label(for='long') Longitude:
+          input#long.form-control(name='long', type='text', value=piscine[0].long)
+        .form-group
+          label(for='lat') Latitude:
+          input#lat.form-control(name='lat', type='text', value=piscine[0].lat)
+        .form-group.text-right.row(style='margin-right: 5px;')
+          button.btn.btn-primary.btn-lg(type='button', onclick="modifierPiscine('" + piscine[0]._id + "');") Modifier
+
+block menuactive 
+  - var menu = 0
+
+block titre 
+  title #{piscine[0].nom}

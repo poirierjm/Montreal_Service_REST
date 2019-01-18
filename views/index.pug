@@ -1,0 +1,83 @@
+extends layout
+
+block content
+  h1 Index 
+  hr.divider
+
+  .row
+    .col-xs-12.col-md-12
+      form
+        .form-group
+          label.sr-only(for='arrondSearch') Arrondissement:
+          input#arrondSearch.form-control(name='arrondSearch', type='text', placeholder='Ex: Verdun, LaSalle ...')
+        .form-group.text-right.row(style='margin-right: 5px;')
+          button.btn.btn-primary.btn-lg(type='button', onclick="filtrerInstallationsAvecArrond();") Rechercher
+
+      #succes-gli.alert.alert-success.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span L'installastion aquatique à été supprimer avec succès
+
+      h3 Glissade
+      table.table.table-bordered
+        thead
+          tr
+            th Nom
+            th Cle Arrond
+            th Date Maj
+            th Ouvert
+            th Deblaye
+            th Condition
+            th 
+        tbody#glissade
+          tr
+            td(colspan="7") Aucune donnée
+      br
+
+      #succes-pat.alert.alert-success.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span La patinoire à été supprimer avec succès
+
+      h3 Patinoire
+      table.table.table-bordered
+        thead
+          tr
+            th Nom
+            th Cle Arrond
+            th Date Maj
+            th Ouvert
+            th Deblaye
+            th Arrose
+            th Resurface
+            th Condition
+            th 
+        tbody#patinoire
+          tr
+            td(colspan="9") Aucune donnée
+      br
+
+      #succes-pis.alert.alert-success.alert-dismissible(style="display: none")
+        a.close(href='#', data-dismiss='alert', aria-label='close') ×
+        span La piscine à été supprimer avec succès
+
+      h3 Piscine
+      table.table.table-bordered
+        thead
+          tr
+            th Type
+            th Nom
+            th Adresse
+            th Prioriete
+            th Gestion
+            th Équipement
+            th Long
+            th Lat
+            th 
+        tbody#piscine
+          tr
+            td(colspan="9") Aucune donnée
+
+block menuactive 
+  - var menu = 1
+
+block titre 
+  title Index

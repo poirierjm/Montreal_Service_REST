@@ -1,0 +1,40 @@
+{
+    "type": "object",
+    "required": true,
+    "additionalProperties": false,
+    "properties": {
+        "nom": {
+            "type": "string",
+            "required": false
+        },
+        "arrondissement": {
+            "type": "object",
+            "required": false,
+            "nom_arr": {
+                "type": "string",
+                "required": false
+            },
+            "cle": {
+                "type": "string",
+                "required": false
+            },
+            "date_maj": {
+                "type": "string",
+                "format": "date-time",
+                "required": false
+            }
+        },
+        "ouvert": {
+            "type": ["number", "null"],
+            "required": false
+        },
+        "deblaye": {
+            "type": ["number", "null"],
+            "required": false
+        },
+        "condition": {
+            "type": "string",
+            "required": false
+        }
+    }
+}

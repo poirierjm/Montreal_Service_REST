@@ -1,0 +1,5 @@
+{
+    "db_host": "localhost",
+    "db_name": "montrealdonnees",
+    "db_port": 27017
+}

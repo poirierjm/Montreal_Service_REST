@@ -1,0 +1,38 @@
+block menuactive
+
+doctype html
+html
+  head
+    block titre 
+    
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width = device-width, initial-scale = 1')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', type='text/css', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+  body
+    .container
+      nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+              span.sr-only
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            //a.pull-left(href='/')
+              img(src='/images/')
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav
+              li(class=(menu == 1 ? "active" : ""))
+                a(href='/') Home 
+              li(class=(menu == 2 ? "active" : ""))
+                a(href='/user') Utilisateur
+              li
+                a(href='/doc') Documentation
+      
+      block content
+
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/script.js')

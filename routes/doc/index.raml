@@ -1,0 +1,327 @@
+#%RAML 1.0
+---
+title: Services sur les données de Montréal
+baseUri: http://localhost:3000
+version: 1
+
+/installations:
+  description: Collection des installations de la ville de Montréal.
+  get:
+    description: Obtenir une liste d'installations selon l'arrondissement passé en paramètre.
+    queryParameters: 
+      arrondissement:
+        description: Le nom d'un arrondissement de la ville de Montréal (Case Sentitive).
+        required: true
+        type: string
+        example: "?arrondissement=LaSalle"
+
+    responses:
+      200:
+        description: Une liste d'installations selon l'arrondissement 'LaSalle' passé en paramètre.
+        body:
+          application/json:
+            example: |
+              {
+                "glissade": [{
+                  "_id": "59ffce01aea92b2c4ee6f7c4",
+                  "nom": "Butte à glisser coin Gagné/boul. LaSalle",
+                  "arrondissement": {
+                    "nom_arr": "LaSalle",
+                    "cle": "lsl",
+                    "date_maj": "2017-03-27 13:24:55"
+                  },
+                  "ouvert": 0,
+                  "deblaye": 0,
+                  "condition": "N/A"
+                }],
+                "patinoire": [{
+                  "_id": "59ffce01aea92b2c4ee6f8d5",
+                  "nom": "Sentier à patiner décoré du parc Raymond (PP)",
+                  "arrondissement": {
+                    "nom_arr": "LaSalle",
+                    "cle": "lsl",
+                    "date_maj": "2017-03-27 13:24:55"
+                  },
+                  "ouvert": null,
+                  "deblaye": 0,
+                  "arrose": 0,
+                  "resurface": 0,
+                  "condition": "N/A"
+                }],
+                "piscine": [{
+                  "_id": "59ffce01aea92b2c4ee6f9a6",
+                  "idUev": 4046808,
+                  "type": "Piscine extérieure",
+                  "nom": "Parc Riverside",
+                  "arrondissement": "LaSalle",
+                  "adresse": "625, 35e Avenue",
+                  "prioriete": "Municipale",
+                  "gestion": "Privé",
+                  "pointX": "295940,2001",
+                  "pointY": "5031131875",
+                  "equipement": "",
+                  "long": -73.613211,
+                  "lat": 45.420058
+                }]
+              }
+      404:
+        description: L'arrondissement spécifié en paramètre ne correspond à aucune installation.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+/condition_mauvaise:
+  description: Collection des installations de la ville de Montréal en mauvais états.
+  get:
+    description: Obtenir la liste complète des installations en mauvais états .
+    responses:
+      200:
+        description: La liste complète des installations en mauvais états.
+        body:
+          application/json:
+            example: |
+              {  
+                "installation":{  
+                  "glissade":[  
+                      {  
+                        "_id":"59ffce01aea92b2c4ee6f7c3",
+                        "nom":"Aire de glissade Félix-Leclerc",
+                        "arrondissement":{  
+                          "nom_arr":"Mercier - Hochelaga-Maisonneuve",
+                          "cle":"mhm",
+                          "date_maj":"2017-03-17 13:36:43"
+                        },
+                        "ouvert":null,
+                        "deblaye":null,
+                        "condition":"Mauvaise"
+                      },
+                      {  
+                        "_id":"59ffce01aea92b2c4ee6f7d3",
+                        "nom":"Glissade, Parc du Bois-Franc",
+                        "arrondissement":{  
+                          "nom_arr":"Saint-Laurent",
+                          "cle":"sla",
+                          "date_maj":"2017-03-07 08:27:43"
+                        },
+                        "ouvert":null,
+                        "deblaye":null,
+                        "condition":"Mauvaise"
+                      }
+                  ],
+                  "patinoire":[  
+                      {  
+                        "_id":"59ffce01aea92b2c4ee6f7ea",
+                        "nom":"Anneau de glace, Parc Lucie-Bruneau (PPL)",
+                        "arrondissement":{  
+                          "nom_arr":"Anjou",
+                          "cle":"anj",
+                          "date_maj":"2017-03-01 15:31:57"
+                        },
+                        "ouvert":null,
+                        "deblaye":1,
+                        "arrose":null,
+                        "resurface":null,
+                        "condition":"Mauvaise"
+                      }
+                  ]
+                }
+              }
+      404:
+        description: Aucune installation est en mauvais état.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+/condition_mauvaise_xml:
+  description: Collection des installations de la ville de Montréal en mauvais états.
+  get:
+    description: Obtenir la liste complète des installations en mauvais états.
+    responses:
+      200:
+        description: La liste complète des installations en mauvais états.
+        body:
+          application/xml:
+            example: |
+              <installations>
+                <patinoires>
+                  <_id>59ffce01aea92b2c4ee6f7ea</_id>
+                  <nom>Anneau de glace, Parc Lucie-Bruneau (PPL)</nom>
+                  <arrondissement>
+                    <nom_arr>Anjou</nom_arr>
+                    <cle>anj</cle>
+                    <date_maj>2017-03-01 15:31:57</date_maj>
+                  </arrondissement>
+                  <ouvert>NaN</ouvert>
+                  <deblaye>1</deblaye>
+                  <arrose>NaN</arrose>
+                  <resurface>NaN</resurface>
+                  <condition>Mauvaise</condition>
+                  </patinoires>
+                <patinoires>
+                  <_id>59ffce01aea92b2c4ee6f7eb</_id>
+                  <nom>Anneau de glace, Parc Talcy (PPL)</nom>
+                  <arrondissement>
+                    <nom_arr>Anjou</nom_arr>
+                    <cle>anj</cle>
+                    <date_maj>2017-03-01 15:31:57</date_maj>
+                  </arrondissement>
+                  <ouvert>NaN</ouvert>
+                  <deblaye>1</deblaye>
+                  <arrose>NaN</arrose>
+                  <resurface>NaN</resurface>
+                  <condition>Mauvaise</condition>
+                </patinoires>
+                <glissades>
+                  <_id>59ffce01aea92b2c4ee6f7d3</_id>
+                  <nom>Glissade, Parc du Bois-Franc</nom>
+                  <arrondissement>
+                    <nom_arr>Saint-Laurent</nom_arr>
+                    <cle>sla</cle>
+                    <date_maj>2017-03-07 08:27:43</date_maj>
+                  </arrondissement>
+                  <ouvert>NaN</ouvert>
+                  <deblaye>NaN</deblaye>
+                  <condition>Mauvaise</condition>
+                </glissades>
+              </installations>
+      404:
+        description: Aucune installation est en mauvais état.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+/condition_mauvaise_csv:
+  description: Collection des installations de la ville de Montréal en mauvais états.
+  get:
+    description: Obtenir la liste complète des installations en mauvais états .
+    responses:
+      200:
+        description: La liste complète des installations en mauvais états.
+        body:
+          application/csv:
+      404:
+        description: Aucune installation est en mauvais état.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+/utilisateur:
+  description: Les utilisateurs
+  get:
+    description: Obtenir la liste de tous les utilisateurs.
+    responses:
+      200:
+        description: La liste de tous les utilisateurs.
+        body:
+          application/json:
+            example: |
+              [
+                {  
+                  "_id":"59fc5acb4ac2c51afee668e7",
+                  "nom":"Bob",
+                  "email":"bob@courrier.uqam.ca",
+                  "arrondissements":[  
+                    {  
+                      "arrondissement":"LaSalle"
+                    },
+                    {  
+                      "arrondissement":"Verdun"
+                    },
+                    {  
+                      "arrondissement":"Saint-Laurent"
+                    }
+                  ]
+                },
+                {  
+                  "_id":"59ffe1b33e120d2d14408465",
+                  "nom":"Jaques Berger",
+                  "email":"jaques@uqam.ca",
+                  "arrondissements":[  
+                  ]
+                }
+              ]
+      404:
+        description: Aucun utilisateur existe pour le moment.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+  post:
+    description: Création d'un utilisateur
+    body:
+      application/json:
+        example: !include ../schemas/creer-utilisateur.json
+    responses:
+      201:
+        description: L'utilisateur à été créer.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+
+/glissade/{id}:
+  description: Les installations aquatiques de la ville de Montréal.
+  put:
+    description: Modifier une installation aquatique selon son identifiant.
+    body:
+      application/json:
+        example: !include ../schemas/modifier-glissade.json
+    responses:
+      201:
+        description: L'installation aquatique a été modifié.
+      404:
+        description: L'identifiant spécifié n'existe pas.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+  delete:
+    description: Supprimer une installation aquatique selon son identifiant.
+    responses:
+      200:
+        description: L'installation aquatique a été supprimé.
+      404:
+        description: L'identifiant spécifié n'existe pas.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+/patinoire/{id}:
+  description: Les patinoires de la ville de Montréal.
+  put:
+    description: Modifier une patinoire selon son identifiant.
+    body:
+      application/json:
+        example: !include ../schemas/modifier-patinoire.json
+    responses:
+      201:
+        description: La patinoire a été modifié.
+      404:
+        description: L'identifiant spécifié n'existe pas.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+  delete:
+    description: Supprimer une patinoire selon son identifiant.
+    responses:
+      200:
+        description: La patinoire a été supprimé.
+      404:
+        description: L'identifiant spécifié n'existe pas.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+
+
+/piscine/{id}:
+  description: Les piscines de la ville de Montréal.
+  put:
+    description: Modifier une piscine selon son identifiant.
+    body:
+      application/json:
+        example: !include ../schemas/modifier-piscine.json
+    responses:
+      201:
+        description: La piscine a été modifié.
+      404:
+        description: L'identifiant spécifié n'existe pas.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.
+  delete:
+    description: Supprimer une piscine selon son identifiant.
+    responses:
+      200:
+        description: La piscine a été supprimé.
+      404:
+        description: L'identifiant spécifié n'existe pas.
+      500:
+        description: Une erreur interne s'est produite. L'erreur a été signalée à l'équipe de développement.

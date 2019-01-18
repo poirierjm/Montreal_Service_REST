@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "required": true,
+    "additionalProperties": false,
+    "properties": {
+        "nom": {
+            "type": "string",
+            "required": true
+        },
+        "email": {
+            "type": "string",
+            "format": "email",
+            "required": true
+        },
+        "arrondissements": {
+            "type": "array",
+            "required": true,
+            "arrondissement": {
+                "type": "string",
+                "required": false
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+doctype xml
+installations
+  each patinoires in installation.patinoire
+    patinoires
+      _id #{patinoires._id}
+      nom #{patinoires.nom}
+      arrondissement
+        nom_arr #{patinoires.arrondissement.nom_arr}
+        cle #{patinoires.arrondissement.cle}
+        date_maj #{patinoires.arrondissement.date_maj}
+      ouvert #{patinoires.ouvert}
+      deblaye #{patinoires.deblaye}
+      arrose #{patinoires.arrose}
+      resurface #{patinoires.resurface}
+      condition #{patinoires.condition}
+
+  each glissades in installation.glissade
+    glissades
+      _id #{glissades._id}
+      nom #{glissades.nom}
+      arrondissement
+        nom_arr #{glissades.arrondissement.nom_arr}
+        cle #{glissades.arrondissement.cle}
+        date_maj #{glissades.arrondissement.date_maj}
+      ouvert #{glissades.ouvert}
+      deblaye #{glissades.deblaye}
+      condition #{glissades.condition}

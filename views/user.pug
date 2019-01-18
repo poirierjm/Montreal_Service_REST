@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1 Utilisateur 
+  hr.divider
+
+  .row
+    .col-xs-12.col-md-12
+
+      if erreurVide
+        .alert.alert-danger.alert-dismissible
+          a.close(href='#', data-dismiss='alert', aria-label='close') ×
+          span #{erreurVide}
+
+      if erreurEmail
+        .alert.alert-danger.alert-dismissible
+          a.close(href='#', data-dismiss='alert', aria-label='close') ×
+          span #{erreurEmail}
+
+      form(action='/creer_utilisateur', method='post')
+        h3 Créer un profil d'utilisateur:
+        .form-group
+          label.sr-only Nom: 
+          input.form-control(name='nom', type='text', placeholder='Nom', value=nomChamps)
+        .form-group
+          label.sr-only Courriel: 
+          input.form-control(name='email', type='email', placeholder='Courriel', value=courrielChamps)
+        #arrondissement
+          .form-group
+            label.sr-only Arrondissements:
+            input.form-control(name='arrondissement1', type='text', placeholder='Arrondissement 1')
+        .form-group
+          input.btn.btn-default.btn-sm(type='button', onclick='ajouterChamps();', value='Ajouter un arrondissement')
+
+        .form-group.text-right.row(style='margin-right: 5px;')
+          input.btn.btn-primary.btn-lg(type='submit', value='Ajouter')
+
+
+block menuactive 
+  - var menu = 2
+
+block titre 
+  title Utilisateur
